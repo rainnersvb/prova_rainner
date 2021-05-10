@@ -141,10 +141,11 @@ public class questao10 {
         try{ // Aguarde 5 segundos para página carregar
             Thread.sleep(5000);
         }catch (Exception e){}
-        WebElement headerBemVindo = TesteBase.driver.findElement(By.cssSelector("div header h1"));
-        if (!headerBemVindo.getText().contains("Bem-vindo, teste rainner")){
+        WebElement headerBemVindo = TesteBase.driver.findElement(By.cssSelector("#headingSubtext"));
+        if (!headerBemVindo.getText().contains("Este dispositivo não foi reconhecido. " +
+                "Para sua segurança, o Google quer confirmar sua identidade.")){
             try{
-                throw new Exception("O teste falhou, não exibiu a mensagem esperada no header da tela de boas-vindas");
+                throw new Exception("O teste falhou, não exibiu a mensagem esperada no header da tela de confirmação");
             }catch (Exception e){}
         }else System.out.println("- 4 - Validação com senha válida concluída!");
         try{ // Fecha após 3 segundos para o driver não ficar gastando memória

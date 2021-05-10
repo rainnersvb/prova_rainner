@@ -24,18 +24,13 @@ public class questao12 {
 
         TesteBase.driver.get("https://rapidapi.com/divad12/api/numbers-1");
         TesteBase.driver.switchTo().defaultContent();
-        WebElement btnTestEndpoint = TesteBase.driver.findElement(By.cssSelector("#endpoint-form button"));
+        WebElement btnTestEndpoint = TesteBase.driver.findElement(By.cssSelector("div.UserToolbar a"));
         btnTestEndpoint.click();
         try{
             System.out.println("- Aguardando carregamento da página inicial...");
             Thread.sleep(3000);
         }catch (Exception e){}
-        WebElement btnLogin = TesteBase.driver.findElement(By.cssSelector("button.ant-btn-link"));
-        btnLogin.click();
-        try{
-            System.out.println("- Aguardando carregamento da página de login...");
-            Thread.sleep(1000);
-        }catch (Exception e){}
+
         // Identificando os campos
         WebElement campoEmail = TesteBase.driver.findElement(By.cssSelector("#login-form_email"));
         WebElement campoPassword = TesteBase.driver.findElement(By.cssSelector("#login-form_password"));
@@ -48,16 +43,17 @@ public class questao12 {
         buttonLogar.click();
         try{
             System.out.println("- Aguardando carregamento da página inicial...");
-            Thread.sleep(10000);
+            Thread.sleep(8000);
         }catch (Exception e){}
-        TesteBase.espere(By.cssSelector("button.endpoint-test-button"));
+        TesteBase.driver.switchTo().frame(TesteBase.driver.findElement(By.cssSelector("iframe.PlaygroundContainer")));
+        TesteBase.espere(By.cssSelector("div.inner-section div button"));
         WebElement apiApp = TesteBase.driver.findElements(By.cssSelector("div.application span")).get(2);
         WebElement apiKey = TesteBase.driver.findElements(By.cssSelector("div.ant-form-item-control-input")).get(1);
         // Exibe no console os valores
         System.out.println("* API App value: "+ apiApp.getText()+"\n* API Key value: "+ apiKey.getText());
 
         // Clicar em Test Endpoint na primeira requisição já selecionada, Get year fact
-        WebElement buttonTestEndpoint = TesteBase.driver.findElement(By.cssSelector("button.endpoint-test-button"));
+        WebElement buttonTestEndpoint = TesteBase.driver.findElement(By.cssSelector("div.inner-section div button"));
         buttonTestEndpoint.click();
         try{
             System.out.println("- Aguardando API trazer resposta para requisição 'Year fact'...");
@@ -73,7 +69,7 @@ public class questao12 {
         try{
             Thread.sleep(1000);
         }catch (Exception e){}
-        buttonTestEndpoint = TesteBase.driver.findElement(By.cssSelector("button.endpoint-test-button"));
+        buttonTestEndpoint = TesteBase.driver.findElement(By.cssSelector("div.inner-section div button"));
         buttonTestEndpoint.click();
         try{
             System.out.println("- Aguardando API trazer resposta para requisição 'Trivia fact'...");
@@ -105,7 +101,7 @@ public class questao12 {
         try{
             Thread.sleep(2000);
         }catch (Exception e){}
-        buttonTestEndpoint = TesteBase.driver.findElement(By.cssSelector("button.endpoint-test-button"));
+        buttonTestEndpoint = TesteBase.driver.findElement(By.cssSelector("div.inner-section div button"));
         buttonTestEndpoint.click();
 
         // Mostrar no console os resultados
@@ -120,7 +116,7 @@ public class questao12 {
         try{
             Thread.sleep(1000);
         }catch (Exception e){}
-        buttonTestEndpoint = TesteBase.driver.findElement(By.cssSelector("button.endpoint-test-button"));
+        buttonTestEndpoint = TesteBase.driver.findElement(By.cssSelector("div.inner-section div button"));
         buttonTestEndpoint.click();
         try{
             System.out.println("- Aguardando API trazer resposta para requisição 'Random fact'...");
@@ -139,7 +135,7 @@ public class questao12 {
         try{
             Thread.sleep(1000);
         }catch (Exception e){}
-        buttonTestEndpoint = TesteBase.driver.findElement(By.cssSelector("button.endpoint-test-button"));
+        buttonTestEndpoint = TesteBase.driver.findElement(By.cssSelector("div.inner-section div button"));
         buttonTestEndpoint.click();
         try{
             System.out.println("- Aguardando API trazer resposta para requisição 'Math fact'...");
@@ -173,7 +169,7 @@ public class questao12 {
         try{
             Thread.sleep(2000);
         }catch (Exception e){}
-        buttonTestEndpoint = TesteBase.driver.findElement(By.cssSelector("button.endpoint-test-button"));
+        buttonTestEndpoint = TesteBase.driver.findElement(By.cssSelector("div.inner-section div button"));
         buttonTestEndpoint.click();
 
         // Mostrar no console os resultados
